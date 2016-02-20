@@ -13,5 +13,7 @@ spring:
     username: dbuser
     password: dbp4ss
     initialize: true
+  thymeleaf:
+    cache: false
 security:
   strength: 10
