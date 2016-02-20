@@ -30,7 +30,7 @@ public class Profile {
     @Column(name = "emission")
     private BigDecimal emission;
     @OneToMany(mappedBy = "profile")
-    private List<CommutyEntry> entries;
+    private List<CommutifyEntry> entries;
 
     public Long getId() {
         return id;
@@ -78,10 +78,10 @@ public class Profile {
         this.emission = emission;
     }
 
-    public List<CommutyEntry> getEntries() {
+    public List<CommutifyEntry> getEntries() {
         return entries;
     }
-    public void setEntries(List<CommutyEntry> entries) {
+    public void setEntries(List<CommutifyEntry> entries) {
         this.entries = entries;
     }
 }

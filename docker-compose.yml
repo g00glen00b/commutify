@@ -1,0 +1,9 @@
+commutify-mysql:
+  image: mysql:latest
+  environment:
+    - MYSQL_ROOT_PASSWORD=p4SSW0rd
+    - MYSQL_DATABASE=commutify
+    - MYSQL_USER=dbuser
+    - MYSQL_PASSWORD=dbp4ss
+  ports:
+    - 3306:3306

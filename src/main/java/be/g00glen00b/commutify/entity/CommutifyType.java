@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "commuty_type")
-public class CommutyType {
+@Table(name = "commutify_type")
+public class CommutifyType {
     @Id
     @Column
     private Long id;

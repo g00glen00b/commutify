@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS profile (
   UNIQUE KEY (email)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS commuty_entry (
+CREATE TABLE IF NOT EXISTS commutify_entry (
   id INT(11) NOT NULL AUTO_INCREMENT,
   type_id INT(11) NOT NULL,
   profile_id INT(11) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS commuty_entry (
   UNIQUE KEY (profile_id, date)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS commuty_type (
+CREATE TABLE IF NOT EXISTS commutify_type (
   id INT(11) NOT NULL,
   name VARCHAR(32) NOT NULL,
   emission DECIMAL(5, 2) NOT NULL,

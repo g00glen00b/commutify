@@ -1,5 +1,5 @@
 # Numbers from https://www.delijn.be/en/overdelijn/organisatie/zorgzaam-ondernemen/milieu/co2-uitstoot-voertuigen.html
-INSERT INTO commuty_type (id, name, emission) VALUES
+INSERT INTO commutify_type (id, name, emission) VALUES
   (1, 'Tram', 0.4),
   (2, 'Bus', 3),
   (3, 'Carpool', 35.75),

@@ -11,13 +11,13 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "commuty_entry")
-public class CommutyEntry {
+@Table(name = "commutify_entry")
+public class CommutifyEntry {
     @Id
     private Long id;
     @ManyToOne
     @JoinColumn(name = "type_id")
-    private CommutyType type;
+    private CommutifyType type;
     @Column
     private DateTime date;
     @ManyToOne
@@ -32,10 +32,10 @@ public class CommutyEntry {
         return id;
     }
 
-    public CommutyType getType() {
+    public CommutifyType getType() {
         return type;
     }
-    public void setType(CommutyType type) {
+    public void setType(CommutifyType type) {
         this.type = type;
     }
 
