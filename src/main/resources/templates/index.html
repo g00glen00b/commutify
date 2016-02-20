@@ -19,24 +19,8 @@
   <!-- endinjector -->
 </head>
 <body ng-app="commutify">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" ui-sref="overview">Commutify</a>
-      </div>
-      <div class="collapse navbar-collapse pull-right">
-        <a ui-sref="login" class="btn btn-warning navbar-btn">Sign in</a>
-      </div>
-    </div>
-  </nav>
-  <div class="container-fluid" ui-view="mainView">
-  </div>
+  <nav class="navbar navbar-default navbar-fixed-top" ui-view="navView"></nav>
+  <div class="container-fluid" ui-view="mainView"></div>
 
 <!-- Don't edit, add Bower dependencies and/or configure main files in Gruntfile.js -->
 <!-- bower:js -->
@@ -53,9 +37,14 @@
 <!-- Don't edit, follow naming conventions -->
 <!-- injector:js -->
 <script src="app/application.module.js"></script>
+<script src="app/http.config.js"></script>
 <script src="app/routing/routes.config.js"></script>
+<script src="app/services/user.service.js"></script>
 <script src="app/routing/state.factory.js"></script>
+<script src="app/services/profile.factory.js"></script>
+<script src="app/feature-login/feature-register/register.controller.js"></script>
 <script src="app/feature-login/login.controller.js"></script>
+<script src="app/feature-navbar/navbar.controller.js"></script>
 <script src="app/feature-overview/overview.controller.js"></script>
 <script src="dist/application.templates.js"></script>
 <!-- endinjector -->

@@ -7,9 +7,11 @@
   angular.module('commutify.routing', ['commutify.core']);
   angular.module('commutify.features.overview', ['commutify.components', 'commutify.services']);
   angular.module('commutify.features.login', ['commutify.components', 'commutify.services']);
+  angular.module('commutify.features.navbar', ['commutify.components', 'commutify.services']);
   angular.module('commutify', [
     'commutify.routing',
     'commutify.features.overview',
-    'commutify.features.login'
+    'commutify.features.login',
+    'commutify.features.navbar'
   ]);
 }(angular));

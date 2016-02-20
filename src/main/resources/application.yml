@@ -3,6 +3,13 @@ spring:
     platform: mysql
   thymeleaf:
     mode: LEGACYHTML5
+    encoding: UTF-8
+    content-type: text/html
+  messages:
+    basename: messages/messages
+    cache-seconds: -1
+    encoding: UTF-8
+    fallback-to-system-locale: false
 server:
   context-path: /commutify
 

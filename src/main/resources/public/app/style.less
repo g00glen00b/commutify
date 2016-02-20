@@ -1,4 +1,24 @@
+@import "feature-login/feature-register/register";
+@import "feature-navbar/navbar";
+
 body {
   padding-top: 50px;
   background-color: #F1F2F6;
+}
+
+#toast-container {
+  top: 62px;
+
+  > .toast.toast-error {
+    background-color: #F2838F;
+    border: #ED5565;
+    color: #A94442;
+    border-radius: 4px;
+  }
+
+  > .toast.toast-success {
+    background-color: #B9DF90;
+    border: #A0D468;
+    color: #3C763D;
+  }
 }

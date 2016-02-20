@@ -2,21 +2,26 @@
   'use strict';
 
   function routeConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.when('', '/commutify');
 
     $stateProvider
-      .state('overview', {
-        url: '/',
+      .state('commutify', {
+        url: '/commutify',
         views: {
           'mainView@': {
             templateUrl: 'app/feature-overview/overview.tpl.html',
             controller: 'OverviewController',
             controllerAs: 'vm'
+          },
+          'navView@': {
+            templateUrl: 'app/feature-navbar/navbar.tpl.html',
+            controller: 'NavbarController',
+            controllerAs: 'vm'
           }
         }
       })
 
-      .state('login', {
+      .state('commutify.login', {
         url: '/login',
         views: {
           'mainView@': {
@@ -25,7 +30,18 @@
             controllerAs: 'vm'
           }
         }
-      });
+      })
+
+        .state('commutify.register', {
+          url: '/register',
+          views: {
+            'mainView@': {
+              templateUrl: 'app/feature-login/feature-register/register.tpl.html',
+              controller: 'RegisterController',
+              controllerAs: 'vm'
+            }
+          }
+        });
   }
 
   routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

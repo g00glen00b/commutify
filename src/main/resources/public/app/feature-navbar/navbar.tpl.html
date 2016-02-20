@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" ui-sref="overview">
+      <span class="fa fa-leaf"></span>
+      Commutify
+    </a>
+  </div>
+  <div class="collapse navbar-collapse pull-right" ng-if="!vm.isAuthenticated()">
+    <a ui-sref="commutify.login" class="btn btn-warning navbar-btn">Sign in</a>
+  </div>
+  <ul class="nav navbar-nav navbar-right" ng-if="vm.isAuthenticated()">
+    <li>
+      <a href="">
+        <img ng-src="{{vm.getUser().avatar}}" width="30" height="30" class="img-circle" />
+        <span>{{vm.getUser().firstName}}</span>
+        <span ng-show="vm.getUser().name != null"> {{vm.getUser().name}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
