@@ -24,6 +24,12 @@ public class ProfileRESTController {
         return service.createProfile(dto);
     }
 
+    @RequestMapping(value = "/my", method = RequestMethod.PUT)
+    @PreAuthorize("isAuthenticated()")
+    public ProfileDTO update(@RequestBody @Valid ProfileDTO dto) {
+        return service.updateProfile(dto);
+    }
+
     @RequestMapping(value = "/my", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
     public ProfileDTO myself() {

@@ -13,9 +13,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 @Service
@@ -28,6 +28,7 @@ public class ProfileServiceImpl implements ProfileService {
     private MessageSource msgSource;
 
     @Override
+    @Transactional
     public ProfileDTO createProfile(UserSignupDTO dto) {
         final CommutifyProfile profile = repository.findByEmail(dto.getEmail());
         if (profile == null) {
@@ -40,6 +41,21 @@ public class ProfileServiceImpl implements ProfileService {
             return map(entity);
         } else {
             throw new ProfileAlreadyExistsException("There is already a user registered with that e-mail address");
+        }
+    }
+
+    @Override
+    @Transactional
+    public ProfileDTO updateProfile(ProfileDTO profile) {
+        final CommutifyProfile entity = repository.findByEmail(getEmail());
+        if (entity != null) {
+            entity.setName(profile.getName());
+            entity.setFirstName(profile.getFirstName());
+            entity.setAverageKmDay(profile.getAverageKmDay());
+            entity.setEmission(profile.getEmission());
+            return map(entity);
+        } else {
+            throw new InvalidProfileException("Profile does not exist");
         }
     }
 
@@ -70,6 +86,8 @@ public class ProfileServiceImpl implements ProfileService {
             .name(profile.getName())
             .firstName(profile.getFirstName())
             .avatar(getAvatar(profile))
+            .emission(profile.getEmission())
+            .averageKmDay(profile.getAverageKmDay())
             .build();
     }
 

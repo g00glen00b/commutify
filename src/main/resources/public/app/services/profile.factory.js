@@ -10,6 +10,14 @@
       login: {
         method: 'POST',
         url: './j_spring_security_check'
+      },
+      update: {
+        method: 'PUT',
+        url: './api/profile/my'
+      },
+      get: {
+        method: 'GET',
+        url: './api/profile/my'
       }
     });
   }

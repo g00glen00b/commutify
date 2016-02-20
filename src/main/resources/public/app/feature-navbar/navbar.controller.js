@@ -6,6 +6,8 @@
     vm.isAuthenticated = isAuthenticated;
     vm.getUser = getUser;
 
+    initialize();
+
     ////////
 
     function isAuthenticated() {
@@ -14,6 +16,10 @@
 
     function getUser() {
       return User.getUser();
+    }
+
+    function initialize() {
+      User.initialize();
     }
   }
 

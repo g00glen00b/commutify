@@ -6,7 +6,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" ui-sref="overview">
+    <a class="navbar-brand" ui-sref="commutify">
       <span class="fa fa-leaf"></span>
       Commutify
     </a>
@@ -16,7 +16,7 @@
   </div>
   <ul class="nav navbar-nav navbar-right" ng-if="vm.isAuthenticated()">
     <li>
-      <a href="">
+      <a ui-sref="commutify.edit">
         <img ng-src="{{vm.getUser().avatar}}" width="30" height="30" class="img-circle" />
         <span>{{vm.getUser().firstName}}</span>
         <span ng-show="vm.getUser().name != null"> {{vm.getUser().name}}</span>

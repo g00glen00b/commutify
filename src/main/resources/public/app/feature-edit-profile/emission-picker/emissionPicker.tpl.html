@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="radio">
+      <label>
+        <input type="radio" ng-model="vm.selectionType" value="car" /> By car type
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Manufacturer</label>
+      <select class="form-control" ng-model="vm.manufacturer"
+         ng-change="vm.setManufacturer(vm.manufacturer)" ng-disabled="vm.selectionType == 'direct'"
+         ng-options="m for m in vm.manufacturers">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Model</label>
+      <select class="form-control" ng-model="vm.model"
+         ng-disabled="vm.manufacturer == null || vm.selectionType == 'direct'" ng-change="vm.setModel(vm.model)"
+         ng-options="m for m in vm.models">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <select class="form-control" ng-model="vm.type"
+         ng-disabled="vm.model == null || vm.selectionType == 'direct'" ng-change="vm.setEmission(vm.type.emission)"
+         ng-options="t as t.type for t in vm.types">
+      </select>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="radio">
+      <label>
+        <input type="radio" ng-model="vm.selectionType" value="direct" /> Direct value
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Emission (g CO<sup>2</sup>/km)</label>
+      <input type="number" class="form-control" placeholder="eg. 120" ng-model="vm.emission"
+         ng-disabled="vm.selectionType == 'car'" ng-change="vm.setEmission(vm.emission)" step="any" />
+    </div>
+  </div>
+</div>

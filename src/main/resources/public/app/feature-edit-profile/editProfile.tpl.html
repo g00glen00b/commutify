@@ -1,0 +1,39 @@
+<div class="band">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li><a ui-sref="commutify">Commutify</a></li>
+      <li>{{vm.profile.firstName}} {{vm.profile.name}}</li>
+      <li>Edit profile</li>
+    </ol>
+
+    <h1 class="lead">Edit profile</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <form name="editProfile" ng-submit="vm.update(vm.profile)">
+      <div class="form-group">
+        <label>Name</label>
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="First name (Required)" ng-model="vm.profile.firstName" required />
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Last name" ng-model="vm.profile.name" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Daily commute (km)</label>
+        <input type="number" class="form-control" ng-model="vm.profile.averageKmDay" step="any" />
+        <span class="help-block">The amount of kilometer you travel each day on average. If you have to travel 10km to your work and 10km back to home, you would enter 20km.</span>
+      </div>
+      <h3>Emission</h3>
+      <emission-picker ng-model="vm.profile.emission" />
+      <p class="text-center">
+        <button class="btn btn-warning" ng-disabled="editProfile.$invalid"><span class="fa fa-pencil"></span> Update</button>
+      </p>
+    </form>
+  </div>
+</div>

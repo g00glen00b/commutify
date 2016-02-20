@@ -7,11 +7,23 @@
     vm.login = login;
     vm.isAuthenticated = isAuthenticated;
     vm.getUser = getUser;
+    vm.setUser = setUser;
+    vm.initialize = initialize;
 
     ////////
 
+    function initialize() {
+      return $http.get('./api/profile/my').then(function(result) {
+        currentUser = result.data;
+      });
+    }
+
     function getUser() {
       return currentUser;
+    }
+
+    function setUser(user) {
+      currentUser = user;
     }
 
     function isAuthenticated() {

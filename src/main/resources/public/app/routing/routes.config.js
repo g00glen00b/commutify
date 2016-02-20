@@ -32,16 +32,27 @@
         }
       })
 
-        .state('commutify.register', {
-          url: '/register',
-          views: {
-            'mainView@': {
-              templateUrl: 'app/feature-login/feature-register/register.tpl.html',
-              controller: 'RegisterController',
-              controllerAs: 'vm'
-            }
+      .state('commutify.register', {
+        url: '/register',
+        views: {
+          'mainView@': {
+            templateUrl: 'app/feature-login/feature-register/register.tpl.html',
+            controller: 'RegisterController',
+            controllerAs: 'vm'
           }
-        });
+        }
+      })
+
+      .state('commutify.edit', {
+        url: '/edit',
+        views: {
+          'mainView@': {
+            templateUrl: 'app/feature-edit-profile/editProfile.tpl.html',
+            controller: 'EditProfileController',
+            controllerAs: 'vm'
+          }
+        }
+      });
   }
 
   routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

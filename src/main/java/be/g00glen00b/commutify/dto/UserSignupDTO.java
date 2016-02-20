@@ -6,10 +6,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UserSignupDTO {
-    @NotNull(message = "userSignup.firstName.notNull")
-    @Size(max = 32, message = "userSignup.firstName.size")
+    @NotNull(message = "profile.firstName.notNull")
+    @Size(max = 32, message = "profile.firstName.size")
     private String firstName;
-    @Size(max = 32, message = "userSignup.name.size")
+    @Size(max = 32, message = "profile.name.size")
     private String name;
     @NotNull(message = "userSignup.email.notNull")
     @Size(max = 128, message = "userSignup.email.size")

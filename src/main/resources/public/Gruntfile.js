@@ -87,6 +87,7 @@
               'angular': { main: 'angular.min.js' },
               'angular-resource': { main: 'angular-resource.min.js' },
               'angular-ui-router': { main: 'release/angular-ui-router.min.js' },
+              'angular-bootstrap': { main: 'ui-bootstrap-tpls.min.js' },
               'bootstrap': { main: ['dist/css/bootstrap.min.css', 'dist/js/bootstrap.min.js'] },
               'bootflatv2': { main: 'bootflat/css/bootflat.min.css' },
               'fontawesome': { main: 'css/font-awesome.min.css' },

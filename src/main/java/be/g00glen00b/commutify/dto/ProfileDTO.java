@@ -1,16 +1,27 @@
 package be.g00glen00b.commutify.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.math.BigDecimal;
+
 public class ProfileDTO {
     private Long id;
+    @NotNull(message = "profile.firstName.notNull")
+    @Size(max = 32, message = "profile.firstName.size")
     private String firstName;
+    @Size(max = 32, message = "profile.name.size")
     private String name;
     private String avatar;
+    private BigDecimal emission;
+    private BigDecimal averageKmDay;
 
     public static class Builder {
         private Long id;
         private String firstName;
         private String name;
         private String avatar;
+        private BigDecimal emission;
+        private BigDecimal averageKmDay;
 
         public Builder id(Long id) {
             this.id = id;
@@ -32,6 +43,16 @@ public class ProfileDTO {
             return this;
         }
 
+        public Builder emission(BigDecimal emission) {
+            this.emission = emission;
+            return this;
+        }
+
+        public Builder averageKmDay(BigDecimal averageKmDay) {
+            this.averageKmDay = averageKmDay;
+            return this;
+        }
+
         public ProfileDTO build() {
             return new ProfileDTO(this);
         }
@@ -45,10 +66,12 @@ public class ProfileDTO {
         this.name = builder.name;
         this.firstName = builder.firstName;
         this.avatar = builder.avatar;
+        this.emission = builder.emission;
+        this.averageKmDay = builder.averageKmDay;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -70,5 +93,19 @@ public class ProfileDTO {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public BigDecimal getEmission() {
+        return emission;
+    }
+    public void setEmission(BigDecimal emission) {
+        this.emission = emission;
+    }
+
+    public BigDecimal getAverageKmDay() {
+        return averageKmDay;
+    }
+    public void setAverageKmDay(BigDecimal averageKmDay) {
+        this.averageKmDay = averageKmDay;
     }
 }
