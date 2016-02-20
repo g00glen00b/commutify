@@ -1,6 +1,8 @@
 spring:
   datasource:
     platform: mysql
+  thymeleaf:
+    mode: LEGACYHTML5
 server:
   context-path: /commutify
 

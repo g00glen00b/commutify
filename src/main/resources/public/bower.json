@@ -2,6 +2,7 @@
   "name": "commutify",
   "description": "Web application for gamification of the way you travel to your work",
   "dependencies": {
+    "bootstrap": "^3.3.4",
     "bootflatv2": "^2.0.4",
     "angular": "^1.5.0",
     "angular-resource": "^1.5.0",
