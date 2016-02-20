@@ -4,3 +4,7 @@ mvnw.cmd
 .idea/
 .mvn/
 target/
+dist/
+node_modules/
+bower_components/
+node/

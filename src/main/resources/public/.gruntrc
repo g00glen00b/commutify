@@ -1,0 +1,37 @@
+{
+  "sources": {
+    "javascript": "app/**/*.js",
+    "templates": "app/**/*.tpl.html",
+    "spec": "app/**/*.spec.js",
+    "less": {
+      "pattern": "app/**/*.less",
+      "main": "app/style.less"
+    },
+    "angular": {
+      "directives": "app/**/*.directive.js",
+      "config": "app/**/*.config.js",
+      "modules": "app/**/*.module.js",
+      "constants": "app/**/constants.js",
+      "controllers": "app/**/*.controller.js",
+      "services": "app/**/*.service.js",
+      "factories": "app/**/*.factory.js",
+      "filters": "app/**/*.filter.js"
+    },
+    "thymeleaf": "../templates/index.html"
+  },
+  "dist": {
+    "css": {
+      "pattern": "dist/**/*.min.css",
+      "unminified": "dist/style.css",
+      "minified": "dist/style.min.css"
+    },
+    "js": {
+      "templates": "dist/application.templates.js"
+    }
+  },
+  "paths": {
+    "public": "../public/",
+    "dist": "dist",
+    "app": "app"
+  }
+}

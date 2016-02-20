@@ -1,0 +1,23 @@
+{
+  "name": "commuty",
+  "description": "Web application for gamification of the way you travel to your work",
+  "version": "0.0.1",
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-wiredep": "^2.0.0",
+    "grunt-injector": "^0.6.0",
+    "grunt-html2js": "^0.3.4",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-clean": "^0.6.0",
+
+    "load-grunt-tasks": "^3.3.0",
+    "time-grunt": "^1.2.1",
+    "jit-grunt": "^0.9.1",
+
+    "jshint-stylish": "^2.0.1"
+  }
+}
