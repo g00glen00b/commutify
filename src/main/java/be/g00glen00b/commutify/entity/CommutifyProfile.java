@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table
-public class Profile {
+@Table(name = "profile")
+public class CommutifyProfile {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)

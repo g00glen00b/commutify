@@ -13,3 +13,5 @@ spring:
     username: dbuser
     password: dbp4ss
     initialize: true
+security:
+  strength: 10

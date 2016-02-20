@@ -22,7 +22,7 @@ public class CommutifyEntry {
     private DateTime date;
     @ManyToOne
     @JoinColumn(name = "profile_id")
-    private Profile profile;
+    private CommutifyProfile profile;
     @Column
     private BigDecimal km;
     @Column
@@ -46,10 +46,10 @@ public class CommutifyEntry {
         this.date = date;
     }
 
-    public Profile getProfile() {
+    public CommutifyProfile getProfile() {
         return profile;
     }
-    public void setProfile(Profile profile) {
+    public void setProfile(CommutifyProfile profile) {
         this.profile = profile;
     }
 
