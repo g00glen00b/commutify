@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    platform: mysql
+server:
+  context-path: /commutify
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://192.168.99.100:3306/commuty?useSSL=false
+    username: dbuser
+    password: dbp4ss
+    initialize: true
