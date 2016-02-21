@@ -49,7 +49,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/commutify?useSSL=false
     username: dbuser
     password: dbpass
-    initialize: true
+    initialize: false
   thymeleaf:
     cache: true
 security:
