@@ -1,0 +1,26 @@
+<div class="commutify calendar">
+  <div class="years clearfix">
+    <div class="unit prev" ng-click="vm.previous()"><em></em></div>
+    <div class="monyear">{{vm.getMonthDay() | date:'MMMM y'}}</div>
+    <div class="unit next" ng-click="vm.next()"><em></em></div>
+  </div>
+  <div class="days">
+    <div class="clearfix">
+      <div class="unit">SU</div>
+      <div class="unit">MO</div>
+      <div class="unit">TU</div>
+      <div class="unit">WE</div>
+      <div class="unit">TH</div>
+      <div class="unit">FR</div>
+      <div class="unit">SA</div>
+    </div>
+    <div class="clearfix">
+      <div ng-repeat="week in vm.weeks track by $index">
+        <div class="unit" ng-repeat="day in week track by $index" ng-class="vm.getClasses(day)"
+          ng-click="vm.selectDay(day)">
+          <b>{{day.dayOfMonth}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

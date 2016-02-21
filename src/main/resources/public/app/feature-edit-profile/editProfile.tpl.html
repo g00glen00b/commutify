@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <ol class="breadcrumb">
       <li><a ui-sref="commutify">Commutify</a></li>
-      <li>{{vm.profile.firstName}} {{vm.profile.name}}</li>
+      <li><a ui-sref="commutify.profile({ id: vm.profile.id })">{{vm.profile.firstName}} {{vm.profile.name}}</a></li>
       <li>Edit profile</li>
     </ol>
 

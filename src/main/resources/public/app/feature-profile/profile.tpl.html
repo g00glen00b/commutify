@@ -1,0 +1,100 @@
+<div class="band">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li><a ui-sref="commutify">Commutify</a></li>
+      <li>{{vm.profile.firstName}} {{vm.profile.name}}</li>
+    </ol>
+
+    <h1 class="text-center lead">
+      <img ng-src="{{vm.profile.avatar}}" class="img-circle" width="80" height="80" /><br />
+      {{vm.profile.firstName}} {{vm.profile.name}}
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <h3>Calendar</h3>
+    <div class="row">
+      <div class="col-sm-7">
+        <commutify-calendar ng-model="vm.selectedDay" ng-change="vm.getEntry(vm.selectedDay)"
+            entries="vm.profile.entries">
+        </commutify-calendar>
+      </div>
+      <div class="col-sm-5" ng-class="{'invisible': vm.selectedDay == null}">
+        <h4 class="lead">{{vm.selectedDay | date:'dd MMM y'}}</h4>
+        <form name="entry" ng-submit="vm.updateEntry(vm.entry)">
+          <div class="form-group">
+            <label>Travel type</label>
+            <div class="radio" ng-repeat="type in vm.types">
+              <label>
+                <input type="radio" name="type" ng-model="vm.entry.type" required ng-value="type" />
+                <span class="fa" ng-class="type.icon"></span> {{type.name}}
+                <small ng-if="type.ecological">(<span class="fa fa-leaf"></span>)</small>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Distance (km)</label>
+            <input type="number" class="form-control" ng-model="vm.entry.distance" />
+          </div>
+          <button class="btn btn-warning" ng-disabled="entry.$invalid" type="submit">
+            Update calendar
+          </button>
+          <button class="btn btn-danger" type="button" ng-click="vm.deleteEntry(vm.entry)" ng-if="vm.entry.id != null">
+            <span class="fa fa-trash-o"></span> Delete entry
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="jumbotron stats">
+      <div class="jumbotron-contents">
+        <p class="text-center">
+          <img ng-src="{{vm.profile.avatar}}" width="32" height="32" class="img-circle" /><br />
+          <span class="lead">
+            {{vm.profile.firstName}} {{vm.profile.name}}<br />
+            <small class="text-uppercase"><strong>Saved</strong></small>
+          </span>
+        </p>
+        <hr />
+        <!-- CO2 -->
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="text-center">
+              <span class="fa-stack fa-lg stat">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <span class="fa fa-car fa-stack-1x"></span>
+              </span>
+            </p>
+          </div>
+          <div class="col-xs-8">
+            <strong class="stat">
+              {{vm.profile.saved | number}} g CO<sup>2</sup><br />
+              <small>from polluting the air</small>
+            </strong>
+          </div>
+        </div>
+
+        <!-- Ecological footprint -->
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="text-center">
+              <span class="fa-stack fa-lg stat">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <span class="fa fa-globe fa-stack-1x"></span>
+              </span>
+            </p>
+          </div>
+          <div class="col-xs-8">
+            <strong class="stat">
+              {{vm.getSquareMeters(vm.profile.saved) | number:0}} m<sup>2</sup><br />
+              <small>on our ecological footprint</small>
+            </strong>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

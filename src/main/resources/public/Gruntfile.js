@@ -92,7 +92,8 @@
               'bootflatv2': { main: 'bootflat/css/bootflat.min.css' },
               'fontawesome': { main: 'css/font-awesome.min.css' },
               'jquery': { main: 'dist/jquery.min.js' },
-              'lodash': { main: 'lodash.min.js' }
+              'lodash': { main: 'lodash.min.js' },
+              'calendrical': { main: 'src/calendrical.js' }
             }
           }
         }

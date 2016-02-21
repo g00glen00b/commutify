@@ -13,9 +13,11 @@
     ////////
 
     function initialize() {
-      return $http.get('./api/profile/my').then(function(result) {
-        currentUser = result.data;
-      });
+      if (currentUser == null) {
+        return $http.get('./api/profile/my').then(function (result) {
+          currentUser = result.data;
+        });
+      }
     }
 
     function getUser() {

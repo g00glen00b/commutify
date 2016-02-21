@@ -1,4 +1,3 @@
-# Numbers from https://www.delijn.be/en/overdelijn/organisatie/zorgzaam-ondernemen/milieu/co2-uitstoot-voertuigen.html
 INSERT INTO commutify_type (id, name, emission) VALUES
   (1, 'Tram', 0.4),
   (2, 'Bus', 3),
@@ -7,7 +6,6 @@ INSERT INTO commutify_type (id, name, emission) VALUES
   (5, 'Train', 0.28),
   (6, 'By foot', 0)
 ON DUPLICATE KEY UPDATE name=name, emission=emission;
-
 
 INSERT INTO car_emission (manufacturer, model, type, emission) VALUES
   ('ALFA ROMEO','Giulietta','1.6 JTDm-2 105 bhp (2014 onwards)',104),

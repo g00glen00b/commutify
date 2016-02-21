@@ -1,6 +1,7 @@
 package be.g00glen00b.commutify.controller.api;
 
 import be.g00glen00b.commutify.dto.MessageDTO;
+import be.g00glen00b.commutify.service.InvalidEntryException;
 import be.g00glen00b.commutify.service.InvalidProfileException;
 import be.g00glen00b.commutify.service.ProfileAlreadyExistsException;
 import org.omg.CORBA.DynAnyPackage.Invalid;
@@ -48,12 +49,23 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(InvalidProfileException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public MessageDTO processInvalidException(ProfileAlreadyExistsException ex) {
+    public MessageDTO processInvalidException(InvalidProfileException ex) {
         Locale locale = LocaleContextHolder.getLocale();
         return new MessageDTO.Builder()
             .code("INV_OBJECT")
             .message(msgSource.getMessage("profile.nonExisting", null, locale))
             .build();
+    }
+
+    @ExceptionHandler(InvalidEntryException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public MessageDTO processInvalidException(InvalidEntryException ex) {
+        Locale locale = LocaleContextHolder.getLocale();
+        return new MessageDTO.Builder()
+                .code("INV_OBJECT")
+                .message(msgSource.getMessage("entry.type.nonExisting", null, locale))
+                .build();
     }
 
     private String getDefaultMessage(MethodArgumentNotValidException ex) {

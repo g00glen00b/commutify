@@ -52,7 +52,18 @@
             controllerAs: 'vm'
           }
         }
-      });
+      })
+
+        .state('commutify.profile', {
+          url: '/profile/:id',
+          views: {
+            'mainView@': {
+              templateUrl: 'app/feature-profile/profile.tpl.html',
+              controller: 'ProfileController',
+              controllerAs: 'vm'
+            }
+          }
+        });
   }
 
   routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

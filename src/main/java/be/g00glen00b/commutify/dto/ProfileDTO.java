@@ -3,6 +3,7 @@ package be.g00glen00b.commutify.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ProfileDTO {
     private Long id;
@@ -14,6 +15,8 @@ public class ProfileDTO {
     private String avatar;
     private BigDecimal emission;
     private BigDecimal averageKmDay;
+    private List<EntryDTO> entries;
+    private BigDecimal saved;
 
     public static class Builder {
         private Long id;
@@ -22,6 +25,8 @@ public class ProfileDTO {
         private String avatar;
         private BigDecimal emission;
         private BigDecimal averageKmDay;
+        private List<EntryDTO> entries;
+        private BigDecimal saved;
 
         public Builder id(Long id) {
             this.id = id;
@@ -53,6 +58,16 @@ public class ProfileDTO {
             return this;
         }
 
+        public Builder entries(List<EntryDTO> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public Builder saved(BigDecimal saved) {
+            this.saved = saved;
+            return this;
+        }
+
         public ProfileDTO build() {
             return new ProfileDTO(this);
         }
@@ -68,6 +83,8 @@ public class ProfileDTO {
         this.avatar = builder.avatar;
         this.emission = builder.emission;
         this.averageKmDay = builder.averageKmDay;
+        this.entries = builder.entries;
+        this.saved = builder.saved;
     }
 
     public Long getId() {
@@ -107,5 +124,19 @@ public class ProfileDTO {
     }
     public void setAverageKmDay(BigDecimal averageKmDay) {
         this.averageKmDay = averageKmDay;
+    }
+
+    public List<EntryDTO> getEntries() {
+        return entries;
+    }
+    public void setEntries(List<EntryDTO> entries) {
+        this.entries = entries;
+    }
+
+    public BigDecimal getSaved() {
+        return saved;
+    }
+    public void setSaved(BigDecimal saved) {
+        this.saved = saved;
     }
 }

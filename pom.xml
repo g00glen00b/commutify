@@ -65,6 +65,15 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>3.2.0.GA</version>
+        </dependency>
     </dependencies>
     
     <build>
@@ -152,6 +161,8 @@
                     <exclude>**/bower_components/bootstrap/fonts/**/*</exclude>
                     <exclude>**/bower_components/bootstrap/js/**/*</exclude>
                     <exclude>**/bower_components/bootstrap/grunt/**/*</exclude>
+                    <!-- Calendrical -->
+                    <exclude>**/bower_components/calendrical/test/**/*</exclude>
                 </excludes>
             </resource>
         </resources>

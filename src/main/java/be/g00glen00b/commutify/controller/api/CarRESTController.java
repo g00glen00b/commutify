@@ -4,6 +4,7 @@ import be.g00glen00b.commutify.dto.CarCollectionDTO;
 import be.g00glen00b.commutify.dto.StringCollectionDTO;
 import be.g00glen00b.commutify.service.impl.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class CarRESTController {
     private CarService service;
 
     @RequestMapping("/manufacturers")
+    @PreAuthorize("permitAll()")
     public StringCollectionDTO findManufacturers(
             @RequestParam(required = false) String search,
             @RequestParam(required = false, defaultValue = "0") int offset,
@@ -23,6 +25,7 @@ public class CarRESTController {
     }
 
     @RequestMapping("/models")
+    @PreAuthorize("permitAll()")
     public StringCollectionDTO findModels(
             @RequestParam String manufacturer,
             @RequestParam(required = false) String search,
@@ -32,6 +35,7 @@ public class CarRESTController {
     }
 
     @RequestMapping("/types")
+    @PreAuthorize("permitAll()")
     public CarCollectionDTO findTypes(
             @RequestParam String manufacturer,
             @RequestParam String model,

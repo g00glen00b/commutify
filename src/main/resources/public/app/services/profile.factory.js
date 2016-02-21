@@ -17,7 +17,19 @@
       },
       get: {
         method: 'GET',
+        url: './api/profile/:id'
+      },
+      getMine: {
+        method: 'GET',
         url: './api/profile/my'
+      },
+      updateEntry: {
+        method: 'PUT',
+        url: './api/profile/my/entry'
+      },
+      deleteEntry: {
+        method: 'DELETE',
+        url: './api/profile/my/entry/:id'
       }
     });
   }

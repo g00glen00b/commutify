@@ -29,6 +29,8 @@ public class CommutifyProfile {
     private BigDecimal averageKmDay;
     @Column(name = "emission")
     private BigDecimal emission;
+    @Column(name = "saved_gasses")
+    private BigDecimal saved;
     @OneToMany(mappedBy = "profile")
     private List<CommutifyEntry> entries;
 
@@ -40,6 +42,7 @@ public class CommutifyProfile {
         private String name;
         private BigDecimal averageKmDay;
         private BigDecimal emission;
+        private BigDecimal saved;
         private List<CommutifyEntry> entries;
 
         public Builder id(Long id) {
@@ -77,6 +80,11 @@ public class CommutifyProfile {
             return this;
         }
 
+        public Builder saved(BigDecimal saved) {
+            this.saved = saved;
+            return this;
+        }
+
         public Builder entries(List<CommutifyEntry> entries) {
             this.entries = entries;
             return this;
@@ -99,6 +107,7 @@ public class CommutifyProfile {
         this.emission = builder.emission;
         this.password = builder.password;
         this.entries = builder.entries;
+        this.saved = builder.saved;
     }
 
     public Long getId() {
@@ -152,5 +161,12 @@ public class CommutifyProfile {
     }
     public void setEntries(List<CommutifyEntry> entries) {
         this.entries = entries;
+    }
+
+    public BigDecimal getSaved() {
+        return saved;
+    }
+    public void setSaved(BigDecimal saved) {
+        this.saved = saved;
     }
 }

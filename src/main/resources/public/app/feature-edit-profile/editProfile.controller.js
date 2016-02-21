@@ -1,9 +1,9 @@
 (function(angular) {
   'use strict';
 
-  function EditProfileController(Profile, toastr) {
+  function EditProfileController(Profile, User, toastr) {
     var vm = this;
-    vm.profile = Profile.get();
+    vm.profile = Profile.getMine();
     vm.update = update;
 
     ////////
@@ -18,7 +18,7 @@
     }
   }
 
-  EditProfileController.$inject = ['Profile', 'toastr'];
+  EditProfileController.$inject = ['Profile', 'User', 'toastr'];
 
   angular.module('commutify.features.profile.edit').controller('EditProfileController', EditProfileController);
 }(angular));
