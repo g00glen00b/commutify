@@ -20,7 +20,7 @@
             entries="vm.profile.entries">
         </commutify-calendar>
       </div>
-      <div class="col-sm-5" ng-class="{'invisible': vm.selectedDay == null}">
+      <div class="col-sm-5" ng-class="{'invisible': vm.selectedDay == null}" ng-if="vm.isCurrentUser()">
         <h4 class="lead">{{vm.selectedDay | date:'dd MMM y'}}</h4>
         <form name="entry" ng-submit="vm.updateEntry(vm.entry)">
           <div class="form-group">
@@ -44,6 +44,16 @@
             <span class="fa fa-trash-o"></span> Delete entry
           </button>
         </form>
+      </div>
+      <div class="col-sm-5" ng-class="{'invisible': vm.selectedDay == null}" ng-if="!vm.isCurrentUser()">
+        <h4 class="lead">{{vm.selectedDay | date:'dd MMM y'}}</h4>
+        <p ng-if="vm.entry.type != null">
+          <strong>{{vm.profile.firstName}}</strong> travelled <strong>{{vm.entry.distance}}km</strong>
+          by using alternative ways of transport (<strong><span class="fa" ng-class="vm.entry.type.icon"></span> {{vm.entry.type.name}}</strong>).
+        </p>
+        <p ng-if="vm.entry.type == null" class="text-muted">
+          <strong>{{vm.profile.firstName}}</strong> did nothing special on this day.
+        </p>
       </div>
     </div>
   </div>

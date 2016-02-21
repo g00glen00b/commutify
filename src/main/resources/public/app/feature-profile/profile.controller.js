@@ -1,13 +1,15 @@
 (function(angular) {
   'use strict';
 
-  function ProfileController(Profile, $stateParams, toastr) {
+  function ProfileController(Profile, User, $stateParams, toastr) {
     var vm = this;
     vm.getDayContent = getDayContent;
     vm.getEntry = getEntry;
     vm.updateEntry = updateEntry;
     vm.deleteEntry = deleteEntry;
     vm.getSquareMeters = getSquareMeters;
+    vm.isCurrentUser = isCurrentUser;
+
     vm.types = [{
       id: 1,
       name: 'Tram/Subway',
@@ -90,9 +92,13 @@
       var hToM = 10000;
       return tons * c * hToM;
     }
+
+    function isCurrentUser() {
+      return User.getUser() !== null && vm.profile.id === User.getUser().id;
+    }
   }
 
-  ProfileController.$inject = ['Profile', '$stateParams', 'toastr'];
+  ProfileController.$inject = ['Profile', 'User', '$stateParams', 'toastr'];
 
   angular.module('commutify.features.profile').controller('ProfileController', ProfileController);
 }(angular));
