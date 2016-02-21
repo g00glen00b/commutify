@@ -19,6 +19,7 @@
         <commutify-calendar ng-model="vm.selectedDay" ng-change="vm.getEntry(vm.selectedDay)"
             entries="vm.profile.entries">
         </commutify-calendar>
+        <p><em>Click on any day to view more info. Days with a green circle (<span class="fa fa-circle green"></span>) on the background are the days an alternative way of commute has been chosen.</em></p>
       </div>
       <div class="col-sm-5" ng-class="{'invisible': vm.selectedDay == null}" ng-if="vm.isCurrentUser()">
         <h4 class="lead">{{vm.selectedDay | date:'dd MMM y'}}</h4>

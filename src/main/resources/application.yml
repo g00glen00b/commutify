@@ -26,3 +26,17 @@ spring:
     cache: false
 security:
   strength: 10
+
+---
+
+spring:
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${DB_PORT_3306_TCP_ADDR}:${DB_PORT_3306_TCP_PORT}/${DB_ENV_MYSQL_DATABASE}
+    username: ${DB_ENV_MYSQL_USER}
+    password: ${DB_ENV_MYSQL_PASSWORD}
+    initialize: true
+  thymeleaf:
+    cache: true
+security:
+  strength: 10
