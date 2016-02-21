@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS commutify_type (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS car_emission (
-  manufacturer VARCHAR(20) NOT NULL,
-  model VARCHAR(45) NOT NULL,
-  type VARCHAR(88) NOT NULL,
+  manufacturer VARCHAR(32) NOT NULL,
+  model VARCHAR(64) NOT NULL,
+  type VARCHAR(128) NOT NULL,
   emission DECIMAL(5, 2) NOT NULL,
   PRIMARY KEY(manufacturer,model,type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
