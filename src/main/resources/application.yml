@@ -40,3 +40,17 @@ spring:
     cache: true
 security:
   strength: 10
+
+---
+
+spring:
+  profiles: koding
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/commutify?useSSL=false
+    username: dbuser
+    password: dbpass
+    initialize: true
+  thymeleaf:
+    cache: true
+security:
+  strength: 10
