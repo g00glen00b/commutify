@@ -1,6 +1,7 @@
 package be.g00glen00b.commutify.controller.api;
 
 import be.g00glen00b.commutify.dto.EntryDTO;
+import be.g00glen00b.commutify.dto.ProfileCollectionDTO;
 import be.g00glen00b.commutify.dto.ProfileDTO;
 import be.g00glen00b.commutify.dto.UserSignupDTO;
 import be.g00glen00b.commutify.service.ProfileService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -54,5 +56,13 @@ public class ProfileRESTController {
     @PreAuthorize("isAuthenticated()")
     public ProfileDTO updateEntry(@RequestBody @Valid EntryDTO dto) {
         return service.updateEntry(dto);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @PreAuthorize("permitAll()")
+    public ProfileCollectionDTO getProfiles(
+            @RequestParam(required = false, defaultValue = "0") int offset,
+            @RequestParam(required = false, defaultValue = "10") int limit) {
+        return service.findAll(offset, limit);
     }
 }

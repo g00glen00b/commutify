@@ -1,1 +1,110 @@
-<h1>Hello world</h1>
+<div class="band row">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <h1 class="lead text-center">
+        <br />
+        Encourage yourself and others to save the world from global warming. <br />
+        <a ui-sref="commutify.register" class="btn btn-success btn-lg">Sign up</a>
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <h3>Rankings</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th class="text-right">Saved g CO<sup>2</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="profile in vm.profiles.results">
+          <td>{{vm.offset + $index + 1}}</td>
+          <td>
+            <a ui-sref="commutify.profile({ id: profile.id })">
+              <img ng-src="{{profile.avatar}}" width="24" height="24" class="img-circle" />
+              {{profile.firstName}} {{profile.name}}
+            </a>
+          </td>
+          <td class="text-right">
+            {{profile.saved | number:0}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pull-right">
+      <uib-pagination total-items="vm.profiles.totalResults" ng-model="vm.currentPage"
+          ng-change="vm.changePage(vm.currentPage)" previous-text="&lsaquo;" next-text="&rsaquo;"
+          first-text="&laquo;" last-text="&raquo;">
+      </uib-pagination>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="col-sm-4">
+    <div class="jumbotron stats">
+      <div class="jumbotron-contents">
+        <p class="text-center">
+          <span class="lead">Stats</span>
+        </p>
+        <hr />
+        <!-- Members -->
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="text-center">
+              <span class="fa-stack fa-lg stat">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <span class="fa fa-users fa-stack-1x"></span>
+              </span>
+            </p>
+          </div>
+          <div class="col-xs-8">
+            <strong class="stat">
+              {{vm.profiles.totalResults | number}} users<br />
+              <small>worked together</small>
+            </strong>
+          </div>
+        </div>
+
+        <!-- CO2 -->
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="text-center">
+              <span class="fa-stack fa-lg stat">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <span class="fa fa-car fa-stack-1x"></span>
+              </span>
+            </p>
+          </div>
+          <div class="col-xs-8">
+            <strong class="stat">
+              {{vm.profiles.totalSavings | number}} g CO<sup>2</sup><br />
+              <small>saved from polluting the air</small>
+            </strong>
+          </div>
+        </div>
+
+        <!-- Ecological footprint -->
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="text-center">
+              <span class="fa-stack fa-lg stat">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <span class="fa fa-globe fa-stack-1x"></span>
+              </span>
+            </p>
+          </div>
+          <div class="col-xs-8">
+            <strong class="stat">
+              {{vm.getSquareMeters(vm.profiles.totalSavings) | number:0}} m<sup>2</sup><br />
+              <small>saved on our ecological footprint</small>
+            </strong>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

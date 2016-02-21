@@ -1,6 +1,7 @@
 package be.g00glen00b.commutify.service.impl;
 
 import be.g00glen00b.commutify.dto.EntryDTO;
+import be.g00glen00b.commutify.dto.ProfileCollectionDTO;
 import be.g00glen00b.commutify.dto.ProfileDTO;
 import be.g00glen00b.commutify.dto.TypeDTO;
 import be.g00glen00b.commutify.dto.UserSignupDTO;
@@ -10,6 +11,7 @@ import be.g00glen00b.commutify.entity.CommutifyType;
 import be.g00glen00b.commutify.repository.CommutifyEntryRepository;
 import be.g00glen00b.commutify.repository.CommutifyProfileRepository;
 import be.g00glen00b.commutify.repository.CommutifyTypeRepository;
+import be.g00glen00b.commutify.repository.OffsetPageRequest;
 import be.g00glen00b.commutify.service.InvalidEntryException;
 import be.g00glen00b.commutify.service.InvalidProfileException;
 import be.g00glen00b.commutify.service.ProfileAlreadyExistsException;
@@ -18,14 +20,18 @@ import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -147,6 +153,18 @@ public class ProfileServiceImpl implements ProfileService {
         }
     }
 
+    @Override
+    public ProfileCollectionDTO findAll(int offset, int limit) {
+        final Page<CommutifyProfile> page = repository.findAllOrderedBySavings(new OffsetPageRequest(offset, limit));
+        return new ProfileCollectionDTO.Builder()
+            .offset(offset)
+            .limit(limit)
+            .totalResults(page.getTotalElements())
+            .results(page.getContent().stream().map(this::map).collect(Collectors.toList()))
+            .totalSavings(repository.getTotalSavings())
+            .build();
+    }
+
     private BigDecimal getSavedFromEntry(CommutifyEntry entry) {
         final BigDecimal normalExhaust = getSafe(entry.getEmission()).multiply(getSafe(entry.getKm()));
         final BigDecimal currentExhaust = getSafe(entry.getType().getEmission()).multiply(getSafe(entry.getKm()));
@@ -185,9 +203,17 @@ public class ProfileServiceImpl implements ProfileService {
             .avatar(getAvatar(profile))
             .emission(profile.getEmission())
             .averageKmDay(profile.getAverageKmDay())
-            .entries(profile.getEntries().stream().map(this::map).collect(Collectors.toList()))
+            .entries(getEntriesSafe(profile.getEntries()))
             .saved(getSafe(profile.getSaved()))
             .build();
+    }
+
+    public List<EntryDTO> getEntriesSafe(List<CommutifyEntry> entries) {
+        if (CollectionUtils.isEmpty(entries)) {
+            return new ArrayList<>();
+        } else {
+            return entries.stream().map(this::map).collect(Collectors.toList());
+        }
     }
 
     public EntryDTO map(CommutifyEntry entry) {

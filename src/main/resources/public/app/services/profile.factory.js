@@ -30,6 +30,9 @@
       deleteEntry: {
         method: 'DELETE',
         url: './api/profile/my/entry/:id'
+      },
+      query: {
+        isArray: false
       }
     });
   }

@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 
-  function ProfileController(Profile, User, $stateParams, toastr) {
+  function ProfileController(Profile, User, Emission, $stateParams, toastr) {
     var vm = this;
     vm.getDayContent = getDayContent;
     vm.getEntry = getEntry;
@@ -87,10 +87,7 @@
     }
 
     function getSquareMeters(emission) {
-      var tons =  emission / 1000000;
-      var c = 0.28; // According to http://www.milieurapport.be/Upload/main/MIRA10-01_Ecologische_voetafdruk_Vlaanderen_TW.pdf
-      var hToM = 10000;
-      return tons * c * hToM;
+      return Emission.convertToArea(emission);
     }
 
     function isCurrentUser() {
@@ -98,7 +95,7 @@
     }
   }
 
-  ProfileController.$inject = ['Profile', 'User', '$stateParams', 'toastr'];
+  ProfileController.$inject = ['Profile', 'User', 'Emission', '$stateParams', 'toastr'];
 
   angular.module('commutify.features.profile').controller('ProfileController', ProfileController);
 }(angular));
